@@ -9,6 +9,11 @@ export default function ToDoList() {
     "Example to do #2",
     "Example to do #3"
   ]);
+
+  function addToDo(element) {
+    setToDos([...toDos, element]);
+  }
+
   return (
     <div className={styles.container}>
       <h2>To do list!</h2>
@@ -18,7 +23,7 @@ export default function ToDoList() {
             return <ToDo key={index.toString()} stuff={item} />;
           })}
         </div>
-        <AddItem/>
+        <AddItem addHandler={addToDo}/>
       </div>
     </div>
   );
