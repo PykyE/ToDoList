@@ -47,6 +47,11 @@
     .Svg {
       width: 19.5px;
       height: 19.5px;
+      border-radius: 5px;
+      transition: background-color 0.5s linear;
+      &:hover {
+        background-color: rgb(163, 136, 101);
+      }
     }
   }
 }
