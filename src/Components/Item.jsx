@@ -5,28 +5,43 @@ import { SvgIcon } from "@material-ui/core";
 
 export default function Item(props) {
   const [selectedState, setSelectedState] = useState("");
-  const [states, setStates] = useState(["In progress", "Completed", "Delayed"]);
+  const states = ["InProgress", "Completed", "Delayed"];
 
-  useEffect(() => {
-    console.log(selectedState);
-  }, [selectedState])
+  function handleChange(event) {
+    setSelectedState(event.target.id);
+  }
 
   return (
-    <div className={styles.toDo}>
+    <div
+      className={
+        styles[
+          "toDo".toString() +
+            (selectedState !== "" ? "--" : "").toString() +
+            (selectedState !== "" ? selectedState : "").toString()
+        ]
+      }
+    >
       <span>{props.stuff}</span>
       <div className={styles.toDo__Options}>
         <div className={styles.toDo__State}>
           {states.map((item, index, arr) => {
-            return <input key={item} type="checkbox" id={index} onChange={(e)=>{
-              setSelectedState(e.target.key);
-            }}/>;
+            return (
+              <input
+                key={index}
+                type="checkbox"
+                id={item}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+            );
           })}
         </div>
         <SvgIcon
           className={styles.Svg}
           component={DeleteForeverIcon}
           onClick={() => {
-            console.log("XD");
+            props.deleteHandler(props.index);
           }}
         ></SvgIcon>
       </div>
