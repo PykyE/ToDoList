@@ -5,7 +5,7 @@ import { SvgIcon } from "@material-ui/core";
 
 export default function Item(props) {
   const [selectedState, setSelectedState] = useState("");
-  const states = ["InProgress", "Completed", "Delayed"];
+  const states = ["Completed", "InProgress", "Delayed"];
   const InProgressRef = useRef();
   const CompletedRef = useRef();
   const DelayedRef = useRef();
