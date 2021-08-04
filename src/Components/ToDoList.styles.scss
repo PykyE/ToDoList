@@ -35,20 +35,15 @@ body {
     .toDoList {
       border: 1px solid rgb(122, 88, 42);
       border-radius: 20px;
-      min-height: 70px;
+      min-height: 72px;
       max-height: 85%;
       width: 100%;
       box-sizing: border-box;
       padding: 10px;
       display: flex;
       flex-direction: column;
-      // justify-content: flex-start;
-      
-      :last-child {
-        // margin-top: 10px;
-      }
+      overflow-x: hidden;
+      justify-content: flex-start;
     }
-
-    
   }
 }
