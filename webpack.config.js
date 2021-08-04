@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const jsRules = {
   test: /\.js|[x]$/,
@@ -42,10 +44,7 @@ const jsRules = {
 
 const cssRules = {
   test: /\.css$/i,
-  use: [
-    MiniCssExtractPlugin.loader,
-    "css-loader",
-  ],
+  use: [MiniCssExtractPlugin.loader, "css-loader"],
 };
 
 const sassRules = {
@@ -57,13 +56,17 @@ const sassRules = {
   ],
 };
 
-module.exports = (env, { mode }) => ({
+const config = {
   entry: "./src/index.js",
   output: {
-    filename: "app.[contenthash].js",
+    filename: "js/[name].[contenthash].bundle.js",
+    chunkFilename: "js/[name].[contenthash].chunk.js",
+    path: path.resolve(__dirname, "build"),
     publicPath: "/",
   },
-  mode: "development",
+  devServer: {
+    historyApiFallback: true,
+  },
   resolve: {
     extensions: [".jsx", ".js", ".scss", ".css"],
   },
@@ -75,6 +78,17 @@ module.exports = (env, { mode }) => ({
       title: "To Do List",
       template: "./src/index.html",
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin({
+      filename: "css/[name].[contenthash].css",
+    }),
+    new CleanWebpackPlugin(),
+    new CompressionPlugin(),
   ],
-});
+};
+
+module.exports = (env, { mode }) => {
+  if (mode === "development") {
+    config.devtool = "eval";
+  }
+  return config;
+};
