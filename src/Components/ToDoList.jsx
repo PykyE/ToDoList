@@ -71,7 +71,7 @@ export default function ToDoList() {
         </div>
       </Zoom>
       <Slide left>
-        <h2 style={{ marginTop: "10px", width: "400px" }}>
+        <h2 style={{ marginTop: "10px" }}>
           Current to do's: {toDos.length}
         </h2>
       </Slide>

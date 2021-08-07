@@ -14,7 +14,7 @@ body {
   h2 {
     text-align: center;
     background-color: rgb(240, 173, 87);
-    width: 250px;
+    width: 10em;
     border-radius: 20px;
   }
 
@@ -25,8 +25,9 @@ body {
     align-items: center;
     background-color: rgb(240, 173, 87);
     border-radius: 20px;
-    min-width: 550px;
+    min-width: 280px;
     max-width: 600px;
+    min-height: 590px;
     height: 65%;
     padding: 10px;
     box-sizing: border-box;
@@ -44,6 +45,7 @@ body {
       flex-direction: column;
       overflow-x: hidden;
       justify-content: flex-start;
+      align-self: center;
     }
   }
 }

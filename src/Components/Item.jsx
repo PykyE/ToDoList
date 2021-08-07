@@ -45,7 +45,7 @@ export default function Item(props) {
         ]
       }
     >
-      <span>{props.stuff}</span>
+      <div className={styles.toDo__Text}>{props.stuff}</div>
       <div className={styles.toDo__Options}>
         <div className={styles.toDo__State}>
           {states.map((item, index) => {
